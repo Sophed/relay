@@ -1,7 +1,7 @@
-package pages
+package views
 
 import (
-	"messaging/static"
+	"messaging/static/pages"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -10,7 +10,7 @@ import (
 
 func PageLogin(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	page, err := static.LoginPage()
+	page, err := pages.LoginPage()
 	if err != nil {
 		lg.Warn(err)
 		return c.Redirect("/"+strconv.Itoa(fiber.StatusInternalServerError), fiber.StatusTemporaryRedirect)

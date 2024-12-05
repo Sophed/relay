@@ -1,12 +1,12 @@
-package pages
+package views
 
 import (
-	"messaging/static"
+	"messaging/static/pages"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func PageErrorInternal(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(static.ErrorPage(fiber.StatusInternalServerError, "Internal Server Error"))
+	return c.SendString(pages.ErrorPage(fiber.StatusInternalServerError, "Internal Server Error"))
 }

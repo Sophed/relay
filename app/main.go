@@ -1,7 +1,7 @@
 package main
 
 import (
-	"messaging/routes/pages"
+	"messaging/routes/views"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -14,8 +14,8 @@ func main() {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World!")
 	})
-	app.Get("/login", pages.PageLogin)
-	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), pages.PageErrorInternal)
+	app.Get("/login", views.PageLogin)
+	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.PageErrorInternal)
 
 	lg.Fatl(app.Listen(":1337"))
 }

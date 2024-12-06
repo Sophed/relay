@@ -4,25 +4,29 @@ import (
 	"messaging/static"
 	"messaging/util"
 	"os"
-	"strconv"
 	"strings"
 
 	"github.com/sophed/lg"
 )
 
-func ErrorPage(code int, message string) string {
-	data, err := os.ReadFile(static.PAGES_DIR + "error.html")
+func IndexPage() (string, error) {
+	data, err := os.ReadFile(static.PAGES_DIR + "index.html")
 	if err != nil {
 		lg.Warn(err)
-		return util.SmallError(code, message)
+		return "", err
 	}
 	content := strings.ReplaceAll(string(data), util.Template("app"), static.APP_NAME)
 	styles, err := static.GlobalStyles()
 	if err != nil {
 		lg.Warn(err)
-		return util.SmallError(code, message)
+		return "", err
 	}
+	nav, err := static.Nav()
+	if err != nil {
+		lg.Warn(err)
+		return "", err
+	}
+	content = strings.ReplaceAll(content, util.Template("nav"), nav)
 	content = strings.ReplaceAll(content, util.Template("styles"), styles)
-	content = strings.ReplaceAll(content, util.Template("code"), strconv.Itoa(code))
-	return strings.ReplaceAll(content, util.Template("message"), message)
+	return content, nil
 }

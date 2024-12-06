@@ -1,4 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap");
+
+:root {
+    --bg: #1d2227;
+    --bg-alt: #323b42;
+    --fg: #f3f2f4;
+    --fg-alt: #616c74;
+    --outlines: #434c55;
+    --err: #df2245;
+    --warn: #f0d343;
+    --success: #5bffaa;
+}
+
 body {
-    background-color: black;
-    color: white;
+    font-family: "Recursive", sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--fg);
 }

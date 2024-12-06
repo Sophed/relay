@@ -10,3 +10,8 @@ func PageErrorInternal(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
 	return c.SendString(pages.ErrorPage(fiber.StatusInternalServerError, "Internal Server Error"))
 }
+
+func PageErrorNotFound(c *fiber.Ctx) error {
+	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
+	return c.SendString(pages.ErrorPage(fiber.StatusNotFound, "Not Found"))
+}

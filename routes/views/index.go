@@ -10,7 +10,7 @@ import (
 
 func PageIndex(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	page, err := pages.LoginPage()
+	page, err := pages.IndexPage()
 	if err != nil {
 		lg.Warn(err)
 		return c.Redirect("/"+strconv.Itoa(fiber.StatusInternalServerError), fiber.StatusTemporaryRedirect)

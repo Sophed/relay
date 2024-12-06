@@ -1,0 +1,20 @@
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: var(--outlines) 1px solid;
+}
+
+.nav li a {
+    display: block;
+    color: var(--fg);
+    text-align: center;
+    padding: 1.4em 3.2em;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.nav li a:hover {
+    color: var(--fg-alt);
+}

@@ -1,0 +1,40 @@
+.controls {
+    text-align: left;
+    margin-top: 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30em;
+}
+
+.controls .field {
+    width: 94.4%;
+    margin-bottom: 1em;
+}
+
+.controls button {
+    width: 100%;
+    display: block;
+    background-color: var(--bg-alt);
+    font-size: 16px;
+    color: var(--fg-alt);
+    padding: 0.7em 0.8em;
+    border: 1px var(--fg-alt) solid;
+    transition: 0.2s;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 1em;
+}
+.controls button:hover {
+    background-color: var(--outlines);
+}
+.controls button:active {
+    background-color: var(--fg-alt);
+    color: var(--fg);
+}
+
+.forgot {
+    color: var(--outlines);
+}

@@ -26,6 +26,12 @@ func LoginPage() (string, error) {
 		lg.Warn(err)
 		return "", err
 	}
+	specifics, err := os.ReadFile(static.STYLES_DIR + "login.css")
+	if err != nil {
+		lg.Warn(err)
+		return "", err
+	}
+	styles += string(specifics)
 	content = strings.ReplaceAll(content, util.Template("nav"), nav)
 	content = strings.ReplaceAll(content, util.Template("styles"), styles)
 	return content, nil

@@ -7,10 +7,22 @@
         <title>{{app}} ~ Login</title>
     </head>
     <body>
-        {{nav}}
         <div class="container">
-            <input placeholder="Email address" />
-            <input type="password" placeholder="Password" />
+            {{nav}}
+            <div class="content">
+                <div class="controls">
+                    <p>Login</p>
+                    <input class="field" placeholder="Email address..." />
+                    <input
+                        class="field"
+                        type="password"
+                        placeholder="Password..."
+                    />
+                    <button>Login</button>
+                    <button>Register</button>
+                    <a class="forgot">Forgot your password?</a>
+                </div>
+            </div>
         </div>
     </body>
 </html>

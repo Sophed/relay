@@ -1,7 +1,7 @@
 package main
 
 import (
-	"messaging/routes/views"
+	"messaging/app/views"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
@@ -11,10 +11,12 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Get("/", views.PageIndex)
-	app.Get("/login", views.PageLogin)
-	app.Get("/"+strconv.Itoa(fiber.StatusNotFound), views.PageErrorNotFound)
-	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.PageErrorInternal)
+	app.Get("/", views.ViewIndex)
+	app.Get("/login", views.ViewLogin)
+	app.Get("/"+strconv.Itoa(fiber.StatusNotFound), views.ViewErrorNotFound)
+	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.ViewErrorInternal)
+
+	app.Static("/static", "static")
 
 	lg.Fatl(app.Listen(":1337"))
 }

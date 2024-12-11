@@ -2,21 +2,43 @@ package main
 
 import (
 	"messaging/app/views"
+	"messaging/data/storage"
+	"messaging/routes/api"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/sophed/lg"
 )
 
+const STORAGE_DIR = "storage/"
+const PORT = 1337
+
 func main() {
-	app := fiber.New()
+	storage.METHOD = &storage.StorageJSON{
+		UsersFile:         STORAGE_DIR + "users.json",
+		MessagesFile:      STORAGE_DIR + "messages.json",
+		ConversationsFile: STORAGE_DIR + "conversations.json",
+	}
+	err := storage.METHOD.Test()
+	if err != nil {
+		lg.Fatl(err)
+	}
+	lg.Info("storage checks passed")
+
+	app := fiber.New(fiber.Config{
+		DisableStartupMessage: true,
+	})
 
 	app.Get("/", views.ViewIndex)
 	app.Get("/login", views.ViewLogin)
 	app.Get("/"+strconv.Itoa(fiber.StatusNotFound), views.ViewErrorNotFound)
 	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.ViewErrorInternal)
 
+	app.Post("/register", api.Register)
+	app.Post("/login", api.Login)
+
 	app.Static("/static", "static")
 
-	lg.Fatl(app.Listen(":1337"))
+	lg.Info("server started at http://127.0.0.1:" + strconv.Itoa(PORT))
+	lg.Fatl(app.Listen(":" + strconv.Itoa(PORT)))
 }

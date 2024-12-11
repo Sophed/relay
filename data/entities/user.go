@@ -1,4 +1,9 @@
-package data
+package entities
+
+import (
+	"github.com/sophed/lg"
+	"golang.org/x/crypto/bcrypt"
+)
 
 type User struct {
 	ID             string `json:"id" bson:"_id"`
@@ -7,6 +12,13 @@ type User struct {
 	Email          string `json:"email" bson:"email"`
 	ProfilePicture string `json:"pfp" bson:"pfp"`
 	PasswordHash   string `json:"password_hash" bson:"password_hash"`
-	PasswordSalt   string `json:"password_salt" bson:"password_salt"`
 	Timestamp      int64  `json:"timestamp" bson:"timestamp"`
+}
+
+func Hash(password []byte) string {
+	hash, err := bcrypt.GenerateFromPassword(password, bcrypt.MinCost)
+	if err != nil {
+		lg.Fatl(err)
+	}
+	return string(hash)
 }

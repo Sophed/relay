@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "id": "asoijaljfslkdjflks",
+      "username": "admin",
+      "display_name": "Admin Jones",
+      "email": "admin@admin.com",
+      "pfp": "https://cdn.soph.systems/f/clober.webp",
+      "password_hash": "alksjda",
+      "timestamp": 1733852224
+    }
+  ]
+}

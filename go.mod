@@ -5,6 +5,8 @@ go 1.23.0
 require (
 	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/sophed/lg v0.0.0-20241122232903-0da07f991552
+	golang.org/x/crypto v0.30.0
+	maragu.dev/gomponents v1.0.0
 )
 
 require (
@@ -19,5 +21,4 @@ require (
 	github.com/valyala/fasthttp v1.58.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
 	golang.org/x/sys v0.28.0 // indirect
-	maragu.dev/gomponents v1.0.0 // indirect
 )

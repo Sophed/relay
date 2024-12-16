@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "id": "asoijaljfslkdjflks",
-      "username": "admin",
-      "display_name": "Admin Jones",
-      "email": "admin@admin.com",
-      "pfp": "https://cdn.soph.systems/f/clober.webp",
-      "password_hash": "$2a$04$30MisUlgvN7LmQHbQWjM3et3MozPZXeRElFNnIn5oit.EcQ4aFIDe",
-      "timestamp": 1733852224
+      "id": "df9c41e8-2e2b-41eb-a8e8-e8c7b6d84cd5",
+      "username": "soph",
+      "display_name": "soph",
+      "email": "soph@soph.systems",
+      "pfp": "",
+      "password_hash": "$2a$04$j/Wb4FPNsZQhpyGQKe9Qk.Jw.hS3zQGfMY59ACf08xcxIlIG3m9gq",
+      "timestamp": 1734358776466
     }
   ]
 }

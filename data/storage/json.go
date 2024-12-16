@@ -17,6 +17,15 @@ type userList struct {
 }
 
 func (j *StorageJSON) AddUser(u *entities.User) error {
+	users, err := j.readUsers()
+	if err != nil {
+		return err
+	}
+	users.Entries = append(users.Entries, *u)
+	err = j.writeUsers(users)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -58,6 +67,15 @@ func (j *StorageJSON) readUsers() (*userList, error) {
 	var list userList
 	err = json.Unmarshal(data, &list)
 	return &list, err
+}
+
+func (j *StorageJSON) writeUsers(users *userList) error {
+	data, err := json.MarshalIndent(users, "", "\t")
+	if err != nil {
+		return err
+	}
+	err = os.WriteFile(j.UsersFile, data, 0644)
+	return err
 }
 
 func (j *StorageJSON) readMessages() (*userList, error) {

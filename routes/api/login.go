@@ -46,5 +46,10 @@ func Login(c *fiber.Ctx) error {
 	r, err := json.MarshalIndent(res{
 		Message: "valid",
 	}, "", "\n")
+	if err != nil {
+		lg.Warn(err)
+		return c.SendStatus(fiber.StatusInternalServerError)
+	}
+	lg.Info("[login] " + user.Username + " - " + user.ID)
 	return c.SendString(string(r))
 }

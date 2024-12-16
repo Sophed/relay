@@ -1,15 +1,17 @@
 function submit() {
+  let username = document.getElementById("inp-username").value;
   let email = document.getElementById("inp-email").value;
   let password = document.getElementById("inp-password").value;
-  if (email == "" || password == "") {
+  if (username == "" || email == "" || password == "") {
     alert("One or more input fields are empty.");
     return;
   }
   let auth = {
+    username: username,
     email: email,
     password: password,
   };
-  fetch("/api/login", {
+  fetch("/api/register", {
     method: "POST",
     body: JSON.stringify(auth),
     headers: {
@@ -26,6 +28,6 @@ function submit() {
   });
 }
 
-function register() {
-  window.location.href = "/register";
+function login() {
+  window.location.href = "/login";
 }

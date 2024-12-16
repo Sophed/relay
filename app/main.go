@@ -34,8 +34,8 @@ func main() {
 	app.Get("/"+strconv.Itoa(fiber.StatusNotFound), views.ViewErrorNotFound)
 	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.ViewErrorInternal)
 
-	app.Post("/register", api.Register)
-	app.Post("/login", api.Login)
+	app.Post("/api/register", api.Register)
+	app.Post("/api/login", api.Login)
 
 	app.Static("/static", "static")
 

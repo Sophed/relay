@@ -6,7 +6,7 @@
       "display_name": "Admin Jones",
       "email": "admin@admin.com",
       "pfp": "https://cdn.soph.systems/f/clober.webp",
-      "password_hash": "alksjda",
+      "password_hash": "$2a$04$30MisUlgvN7LmQHbQWjM3et3MozPZXeRElFNnIn5oit.EcQ4aFIDe",
       "timestamp": 1733852224
     }
   ]

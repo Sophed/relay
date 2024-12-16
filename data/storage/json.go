@@ -13,7 +13,7 @@ type StorageJSON struct {
 	ConversationsFile string
 }
 type userList struct {
-	Entries []entities.User
+	Entries []entities.User `json:"users"`
 }
 
 func (j *StorageJSON) AddUser(u *entities.User) error {

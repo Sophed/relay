@@ -11,7 +11,7 @@ func Navbar() Node {
 		Ul(Class("nav"),
 			navItem("Home", "/", "left"),
 			navItem("Pricing", "/pricing", "left"),
-			navItem("Sign Up", "/signup", "right"),
+			navItem("Sign Up", "/register", "right"),
 			navItem("Login", "/login", "right"),
 		),
 	)

@@ -1,14 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-    --bg: #1d2227;
-    --bg-alt: #323b42;
-    --fg: #f3f2f4;
-    --fg-alt: #616c74;
-    --outlines: #434c55;
-    --err: #df2245;
-    --warn: #f0d343;
-    --success: #5bffaa;
+    --bg-dark: #181C20;
+    --bg: #1D2227;
+    --bg-alt: #323B42;
+    --fg: #F3F2F4;
+    --fg-alt: #616C74;
+    --outlines: #434C55;
+    --err: #DF2245;
+    --warn: #F0D343;
+    --success: #5BffAA;
 }
 
 html,
@@ -18,8 +19,10 @@ body {
 }
 
 body {
-    font-family: "Recursive", sans-serif;
+    font-family: "IBM Plex Sans", serif;
+    font-weight: 500;
     font-size: 16px;
+    letter-spacing: 0.2px;
     background-color: var(--bg);
     color: var(--fg);
 }
@@ -34,17 +37,17 @@ body {
 }
 
 button {
-    font-family: "Recursive", sans-serif;
+    font-family: "IBM Plex Sans", serif;
 }
 
 .field {
-    font-family: "Recursive", sans-serif;
+    font-family: "IBM Plex Sans", serif;
     display: block;
-    background-color: var(--bg-alt);
+    background-color: var(--bg-dark);
     font-size: 16px;
     color: var(--fg-alt);
     padding: 0.7em 0.8em;
-    border: 1px var(--fg-alt) solid;
+    border: none;
     transition: 0.2s;
     font-weight: 500;
     border-radius: 4px;

@@ -30,11 +30,10 @@ func main() {
 	})
 
 	app.Get("/", views.ViewIndex)
+	app.Get("/pricing", views.ViewPricing)
 	app.Get("/login", views.ViewLogin)
 	app.Get("/register", views.ViewRegister)
 	app.Get("/app", views.ViewApp)
-	app.Get("/"+strconv.Itoa(fiber.StatusNotFound), views.ViewErrorNotFound)
-	app.Get("/"+strconv.Itoa(fiber.StatusInternalServerError), views.ViewErrorInternal)
 
 	app.Post("/api/login", api.Login)
 	app.Post("/api/register", api.Register)

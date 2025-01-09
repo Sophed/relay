@@ -9,13 +9,13 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
-func ViewIndex(c *fiber.Ctx) error {
+func ViewPricing(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(util.Render(pageIndex()))
+	return c.SendString(util.Render(pagePricing()))
 }
 
-func pageIndex() Node {
-	return components.View("Home",
+func pagePricing() Node {
+	return components.View("Pricing",
 		components.Navbar(),
 		Div(Class("content"),
 			P(Text("Welcome to "+util.APP_NAME)),

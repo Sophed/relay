@@ -1,8 +1,8 @@
 package views
 
 import (
-	"bytes"
 	"messaging/app/components"
+	"messaging/util"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
@@ -11,12 +11,10 @@ import (
 
 func ViewApp(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	page := new(bytes.Buffer)
-	PageApp().Render(page)
-	return c.SendString(page.String())
+	return c.SendString(util.Render(pageApp()))
 }
 
-func PageApp() Node {
+func pageApp() Node {
 	return components.View("App",
 		P(Text("app!!!")),
 	)

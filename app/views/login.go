@@ -1,8 +1,8 @@
 package views
 
 import (
-	"bytes"
 	"messaging/app/components"
+	"messaging/util"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
@@ -11,12 +11,10 @@ import (
 
 func ViewLogin(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	page := new(bytes.Buffer)
-	PageLogin().Render(page)
-	return c.SendString(page.String())
+	return c.SendString(util.Render(pageLogin()))
 }
 
-func PageLogin() Node {
+func pageLogin() Node {
 	return components.View("Login",
 		components.Navbar(),
 		Link(Rel("stylesheet"), Href("static/styles/login.css")),

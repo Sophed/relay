@@ -29,10 +29,10 @@ func Register(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
 	if req.Username == "" || req.Email == "" || req.Password == "" {
-		return c.SendStatus(fiber.StatusBadRequest)
+		return c.SendString(respErr("One or more fields are empty"))
 	}
 	if !validEmail(req.Email) || !validUsername(req.Username) || !validPassword(req.Password) {
-		return c.SendStatus(fiber.StatusBadRequest)
+		return c.SendString(respErr("One or more fields have an invalid format"))
 	}
 	req.Username = strings.ToLower(req.Username)
 	exists, err := alreadyExists(&data.SearchableUser{
@@ -41,15 +41,15 @@ func Register(c *fiber.Ctx) error {
 	})
 	if err != nil {
 		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
+		return c.SendString(respInternal())
 	}
 	if exists {
-		return c.SendStatus(fiber.StatusConflict)
+		return c.SendString(respErr("A user with this email or username already exists"))
 	}
 	id, err := genID()
 	if err != nil {
 		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
+		return c.SendString(respInternal())
 	}
 	user := entities.User{
 		ID:             id,
@@ -63,15 +63,11 @@ func Register(c *fiber.Ctx) error {
 	err = storage.METHOD.AddUser(&user)
 	if err != nil {
 		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
+		return c.SendString(respInternal())
 	}
-	r, err := json.MarshalIndent(res{
-		Message: "valid",
+	r, _ := json.MarshalIndent(res{
+		SessionID: "valid",
 	}, "", "\n")
-	if err != nil {
-		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
-	}
 	lg.Info("[register] " + user.Username + " - " + user.ID)
 	return c.SendString(string(r))
 }
@@ -87,7 +83,7 @@ func validEmail(email string) bool {
 	if len(email) > 64 {
 		return false
 	}
-	_, err := mail.ParseAddress(email)
+	_, err := mail.ParseAddress(email) // TODO: replace this
 	return err == nil
 }
 

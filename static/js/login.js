@@ -17,10 +17,12 @@ function submit() {
     },
   }).then((response) => {
     if (response.status != 200) {
-      alert(response.statusText);
-      return;
+      response.json().then((json) => {
+        alert(json.error);
+      });
     }
     response.json().then((json) => {
+      localStorage.setItem("relay-auth-token", json.token);
       window.location.href = "/app";
     });
   });

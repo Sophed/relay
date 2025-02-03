@@ -16,7 +16,7 @@ type loginReq struct {
 }
 
 type res struct {
-	Message string `json:"message"`
+	SessionID string `json:"session_id"`
 }
 
 func Login(c *fiber.Ctx) error {
@@ -27,29 +27,25 @@ func Login(c *fiber.Ctx) error {
 		return c.SendStatus(fiber.StatusBadRequest)
 	}
 	if req.Email == "" || req.Password == "" {
-		return c.SendStatus(fiber.StatusBadRequest)
+		return c.SendString(respErr("One or more missing fields"))
 	}
 	user, err := storage.METHOD.FindUser(&data.SearchableUser{
 		Email: req.Email,
 	})
 	if err == storage.ErrNotFound {
-		return c.SendStatus(fiber.StatusNotFound)
+		return c.SendString(respErr("No user found with this email"))
 	}
 	if err != nil {
 		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
+		return c.SendString(respInternal())
 	}
 	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(req.Password))
 	if err != nil {
-		return c.SendStatus(fiber.StatusUnauthorized)
+		return c.SendString(respErr("Incorrect login credentials"))
 	}
-	r, err := json.MarshalIndent(res{
-		Message: "valid",
+	r, _ := json.MarshalIndent(res{
+		SessionID: user.NewSession(),
 	}, "", "\n")
-	if err != nil {
-		lg.Warn(err)
-		return c.SendStatus(fiber.StatusInternalServerError)
-	}
 	lg.Info("[login] " + user.Username + " - " + user.ID)
 	return c.SendString(string(r))
 }

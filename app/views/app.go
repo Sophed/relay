@@ -16,6 +16,11 @@ func ViewApp(c *fiber.Ctx) error {
 
 func pageApp() Node {
 	return components.View("App",
-		P(Text("app!!!")),
+		Link(Rel("stylesheet"), Href("static/styles/app.css")),
+		Div(Class("panes"),
+			components.ContactsSidebar(),
+			components.ChatWindow(),
+			components.ProfileSidebar(),
+		),
 	)
 }

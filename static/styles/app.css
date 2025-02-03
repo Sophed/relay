@@ -1,0 +1,54 @@
+.panes {
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.pane {
+    height: 100%;
+}
+
+.contacts-sidebar {
+    background-color: var(--bg);
+    width: 25%;
+}
+
+.chat-window {
+    background-color: var(--bg-alt);
+    width: 50%;
+}
+
+.profile-sidebar {
+    background-color: var(--bg);
+    width: 25%;
+}
+
+.top {
+    padding: 1em;
+}
+
+input {
+    background-color: var(--bg-alt);
+    color: var(--fg-alt);
+    border: none;
+    padding: 0.8em;
+    transition: 0.1s;
+    border-radius: 4px;
+}
+input:focus {
+    color: var(--fg);
+    outline: none;
+}
+
+button {
+    background-color: var(--bg-alt);
+    color: var(--fg-alt);
+    padding: 0.8em 1.6em;
+    transition: 0.1s;
+    border: none;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: var(--fg-alt);
+    color: var(--fg);
+}

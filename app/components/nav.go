@@ -5,6 +5,7 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
+// Navbar returns navbar UI component
 func Navbar() Node {
 	return Div(
 		Link(Rel("stylesheet"), Href("static/styles/nav.css")),
@@ -17,6 +18,7 @@ func Navbar() Node {
 	)
 }
 
+// navItem returns navigation item component
 func navItem(name, path string, pos string) Node {
 	return Li(Style("float:"+pos),
 		A(Href(path), Text(name)),

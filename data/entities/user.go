@@ -18,14 +18,17 @@ type User struct {
 	Contacts       []string `json:"contacts"`
 }
 
+// NewSession creates a new session for the given user and returns the token
 func (u *User) NewSession() string {
 	return sessions.New(u.ID)
 }
 
+// GetTokens returns all of the stored tokens for the given user
 func (u *User) GetTokens() []string {
 	return sessions.GetTokens(u.ID)
 }
 
+// Hash takes a password as input and returns it in a hashed format for storage
 func Hash(password []byte) string {
 	hash, err := bcrypt.GenerateFromPassword(password, bcrypt.MinCost)
 	if err != nil {

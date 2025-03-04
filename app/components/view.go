@@ -8,6 +8,8 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
+
+// View returns the base HTML page template
 func View(title string, elements ...Node) Node {
 	return HTML5(HTML5Props{
 		Title:    util.APP_NAME + " ~ " + title,

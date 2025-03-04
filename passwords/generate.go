@@ -7,6 +7,7 @@ import (
 
 const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890+/-!&$£^*@~#:;,."
 
+// Generate returns a generated password with a given length
 func Generate(length int) string {
 	password := ""
 	for range length {

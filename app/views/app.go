@@ -9,11 +9,13 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
+// ViewApp handles the web request to /app
 func ViewApp(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
 	return c.SendString(util.Render(pageApp()))
 }
 
+// pageApp returns the app page content
 func pageApp() Node {
 	return components.View("App",
 		Link(Rel("stylesheet"), Href("static/styles/app.css")),

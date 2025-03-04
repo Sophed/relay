@@ -9,11 +9,13 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
+// ViewPricing handles the web request to /pricing
 func ViewPricing(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
 	return c.SendString(util.Render(pagePricing()))
 }
 
+// pagePricing returns the pricing page content
 func pagePricing() Node {
 	return components.View("Pricing",
 		components.Navbar(),

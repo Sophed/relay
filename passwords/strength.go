@@ -2,6 +2,7 @@ package passwords
 
 import "unicode"
 
+// Strength evaluates the strength of a password
 func Strength(password string) int {
 	total := 0
 	if len(password) >= 8 {
@@ -19,6 +20,7 @@ func Strength(password string) int {
 	return total
 }
 
+// hasNumbers returns true if the password contains numbers
 func hasNumbers(password string) bool {
 	for _, char := range password {
 		if unicode.IsNumber(char) {
@@ -28,6 +30,7 @@ func hasNumbers(password string) bool {
 	return false
 }
 
+// hasSymbols returns true if the password contains symbols
 func hasSymbols(password string) bool {
 	for _, char := range password {
 		if unicode.IsSymbol(char) {
@@ -37,6 +40,7 @@ func hasSymbols(password string) bool {
 	return false
 }
 
+// hasRepeatingChars returns true if the password contains any repeating characters
 func hasRepeatingChars(password string) bool {
 	for i, char := range password {
 		if i == 0 {

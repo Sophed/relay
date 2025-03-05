@@ -68,11 +68,13 @@ func (j *StorageJSON) Test() error {
 	if err != nil {
 		return err // fail if users file cannot be read
 	}
+	/* TODO: impl
 	_, err = j.readMessages()
 	if err != nil {
 		return err // fail if messages file cannot be read
 	}
 	_, err = j.readConversations()
+	*/
 	return err // fail if conversations file cannot be read
 }
 
@@ -84,7 +86,7 @@ func (j *StorageJSON) readUsers() (*userList, error) {
 	}
 	var list userList
 	err = json.Unmarshal(data, &list) // parse JSON as userList type
-	return &list, err // return list and error result
+	return &list, err                 // return list and error result
 }
 
 // writeUsers writes a userList to the users file
@@ -94,7 +96,7 @@ func (j *StorageJSON) writeUsers(users *userList) error {
 		return err // error on fail
 	}
 	err = os.WriteFile(j.UsersFile, data, 0644) // write to the users file
-	return err // return error on fail
+	return err                                  // return error on fail
 }
 
 func (j *StorageJSON) readMessages() (*messageList, error) {
@@ -104,7 +106,7 @@ func (j *StorageJSON) readMessages() (*messageList, error) {
 	}
 	var list messageList
 	err = json.Unmarshal(data, &list) // parse JSON as messageList type
-	return &list, err // return list and error result
+	return &list, err                 // return list and error result
 }
 
 func (j *StorageJSON) readConversations() (*conversationList, error) {
@@ -114,5 +116,5 @@ func (j *StorageJSON) readConversations() (*conversationList, error) {
 	}
 	var list conversationList
 	err = json.Unmarshal(data, &list) // parse JSON as messageList type
-	return &list, err // return list and error result
+	return &list, err                 // return list and error result
 }

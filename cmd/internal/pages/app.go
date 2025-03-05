@@ -1,24 +1,23 @@
-package views
+package pages
 
 import (
-	"messaging/app/components"
-	"messaging/util"
+	"messaging/cmd/internal/components"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/html"
 )
 
-// ViewApp handles the web request to /app
-func ViewApp(c *fiber.Ctx) error {
+// App handles the web request to /app
+func App(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(util.Render(pageApp()))
+	return c.SendString(render(pageApp()))
 }
 
 // pageApp returns the app page content
 func pageApp() Node {
-	return components.View("App",
-		Link(Rel("stylesheet"), Href("static/styles/app.css")),
+	return base("App",
+		Link(Rel("stylesheet"), Href("/static/css/app.css")),
 		Div(Class("panes"),
 			components.ContactsSidebar(),
 			components.ChatWindow(),

@@ -2,7 +2,9 @@ package entities
 
 import (
 	"messaging/data/sessions"
+	"time"
 
+	"github.com/gofiber/fiber/v2"
 	"github.com/sophed/lg"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -19,13 +21,23 @@ type User struct {
 }
 
 // NewSession creates a new session for the given user and returns the token
-func (u *User) NewSession() string {
+func (u *User) NewSession() sessions.Token {
 	return sessions.New(u.ID)
 }
 
 // GetTokens returns all of the stored tokens for the given user
-func (u *User) GetTokens() []string {
+func (u *User) GetTokens() []sessions.Token {
 	return sessions.GetTokens(u.ID)
+}
+
+func SessionCookie(token string) *fiber.Cookie {
+	return &fiber.Cookie{
+		Name:     sessions.SESSION_COOKIE_KEY,
+		Value:    token,
+		Secure:   true,
+		HTTPOnly: true,
+		Expires:  time.Now().AddDate(1, 0, 0),
+	}
 }
 
 // Hash takes a password as input and returns it in a hashed format for storage

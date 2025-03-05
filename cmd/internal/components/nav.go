@@ -8,7 +8,7 @@ import (
 // Navbar returns navbar UI component
 func Navbar() Node {
 	return Div(
-		Link(Rel("stylesheet"), Href("static/styles/nav.css")),
+		Link(Rel("stylesheet"), Href("static/css/nav.css")),
 		Ul(Class("nav"),
 			navItem("Home", "/", "left"),
 			navItem("Pricing", "/pricing", "left"),

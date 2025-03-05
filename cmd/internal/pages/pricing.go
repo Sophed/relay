@@ -1,7 +1,7 @@
-package views
+package pages
 
 import (
-	"messaging/app/components"
+	"messaging/cmd/internal/components"
 	"messaging/util"
 
 	"github.com/gofiber/fiber/v2"
@@ -9,15 +9,15 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
-// ViewIndex handles the web request to /
-func ViewIndex(c *fiber.Ctx) error {
+// Pricing handles the web request to /pricing
+func Pricing(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(util.Render(pageIndex()))
+	return c.SendString(render(pagePricing()))
 }
 
-// pageIndex returns the home page content
-func pageIndex() Node {
-	return components.View("Home",
+// pagePricing returns the pricing page content
+func pagePricing() Node {
+	return base("Pricing",
 		components.Navbar(),
 		Div(Class("content"),
 			P(Text("Welcome to "+util.APP_NAME)),

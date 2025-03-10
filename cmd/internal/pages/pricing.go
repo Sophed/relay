@@ -3,6 +3,7 @@ package pages
 import (
 	"messaging/cmd/internal/components"
 	"messaging/util"
+	"messaging/web"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
@@ -12,7 +13,7 @@ import (
 // Pricing handles the web request to /pricing
 func Pricing(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(render(pagePricing()))
+	return c.SendString(web.Render(pagePricing()))
 }
 
 // pagePricing returns the pricing page content

@@ -17,18 +17,18 @@ func New(id string) Token {
 	return Token{token}
 }
 
-// ValidToken evaluates whether a given token is valid
-func ValidToken(token Token) bool {
-	for _, list := range sessionMap {
+// ValidToken evaluates whether a given token is valid and returns the user ID if true
+func ValidToken(token Token) (bool, string) {
+	for id, list := range sessionMap {
 		for _, t := range list {
 			if t.Value == token.Value {
-				// return true if a token exists anywhere in the map
-				return true
+				// return true & ID if token exists in the map
+				return true, id
 			}
 		}
 	}
 	// assume false if no results
-	return false
+	return false, ""
 }
 
 // GetTokens returns a list of valid tokens for a given user ID

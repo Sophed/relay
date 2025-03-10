@@ -3,6 +3,7 @@ package pages
 import (
 	"messaging/cmd/internal/components"
 	"messaging/util"
+	"messaging/web"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
@@ -12,7 +13,7 @@ import (
 // Index handles the web request to /
 func Index(c *fiber.Ctx) error {
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(render(pageIndex()))
+	return c.SendString(web.Render(pageIndex()))
 }
 
 // pageIndex returns the home page content

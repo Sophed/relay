@@ -1,10 +1,8 @@
 package pages
 
 import (
-	"bytes"
 	"messaging/util"
 
-	"github.com/sophed/lg"
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/components"
 	. "maragu.dev/gomponents/html"
@@ -26,14 +24,4 @@ func base(title string, elements ...Node) Node {
 			),
 		},
 	})
-}
-
-// render converts a HTML node to a usable string which can be sent to clients
-func render(page Node) string {
-	buf := new(bytes.Buffer) // empty buffer
-	err := page.Render(buf)  // render to buffer
-	if err != nil {
-		lg.Fatl(err) // panic on fail
-	}
-	return buf.String() // return buffer content as string
 }

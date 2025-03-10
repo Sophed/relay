@@ -1,7 +1,9 @@
 package pages
 
 import (
+	"messaging/auth"
 	"messaging/cmd/internal/components"
+	"messaging/web"
 
 	"github.com/gofiber/fiber/v2"
 	. "maragu.dev/gomponents"
@@ -11,8 +13,12 @@ import (
 
 // Login handles the web request to /login
 func Login(c *fiber.Ctx) error {
+	authed, _ := auth.Validate(c)
+	if !authed {
+		return c.Redirect("/app") // redirect to /app if not logged in
+	}
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)
-	return c.SendString(render(pageLogin()))
+	return c.SendString(web.Render(pageLogin()))
 }
 
 // pageLogin returns the login page content

@@ -34,7 +34,7 @@ func AddContact(c *fiber.Ctx) error {
 	}
 
 	target.GetTokens()
-	// TODO: add target to users contact list - we need one of those
+	// TODO: add target to users contact list
 
-	return c.SendString(web.Render(components.ContactsSidebar(user)))
+	return c.SendString(web.Render(components.ContactsList(user)))
 }

@@ -2,22 +2,22 @@
 	"users": [
 		{
 			"id": "df9c41e8-2e2b-41eb-a8e8-e8c7b6d84cd5",
-			"username": "soph",
-			"display_name": "soph",
-			"email": "soph@soph.systems",
+			"username": "jdoe",
+			"display_name": "John Doe",
+			"email": "jdoe@gmail.com",
 			"pfp": "",
 			"password_hash": "$2a$04$j/Wb4FPNsZQhpyGQKe9Qk.Jw.hS3zQGfMY59ACf08xcxIlIG3m9gq",
 			"timestamp": 1734358776466,
 			"contacts": null
 		},
 		{
-			"id": "7e321677-a5a8-4c0d-9446-363a7de93c8b",
-			"username": "sophie",
-			"display_name": "sophie",
+			"id": "8f5e2d6b-d264-4bb3-ba27-48a3a9b5201a",
+			"username": "soph",
+			"display_name": "soph",
 			"email": "sophed@pm.me",
 			"pfp": "",
-			"password_hash": "$2a$04$lcd2qQ2c38d11acQlLQAhuCb9trXXIiHN7f06c6QdN4Foh0yG9wdq",
-			"timestamp": 1741173674699,
+			"password_hash": "$2a$04$qdPAJ9vK5hhAfQIry8Jx5.e9wWVbZPn8ZtHgtkGcauvEnVMEaTtju",
+			"timestamp": 1742297410366,
 			"contacts": null
 		}
 	]

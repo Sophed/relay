@@ -14,7 +14,7 @@ import (
 // Login handles the web request to /login
 func Login(c *fiber.Ctx) error {
 	authed, _ := auth.Validate(c)
-	if !authed {
+	if authed {
 		return c.Redirect("/app") // redirect to /app if not logged in
 	}
 	c.Set(fiber.HeaderContentType, fiber.MIMETextHTML)

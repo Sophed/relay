@@ -1,12 +1,21 @@
 package components
 
 import (
+	"messaging/data/entities"
+
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/html"
 )
 
-func ChatWindow() Node {
-	return Div(Class("pane chat-window"),
-		Text("chat window"),
+const ID_CHAT_WINDOW = "chat-window"
+
+func ChatWindow(user, target *entities.User) Node {
+	if user == nil || target == nil {
+		return Div(ID(ID_CHAT_WINDOW), Class("pane"),
+			Text("Select a contact to get started"),
+		)
+	}
+	return Div(ID(ID_CHAT_WINDOW), Class("pane"),
+		Text("chat between "+user.DisplayName+" and "+target.DisplayName),
 	)
 }

@@ -27,17 +27,17 @@ func ContactsSidebar(user *entities.User) Node {
 func ContactsList(user *entities.User) Node {
 	contacts := fetchContacts(user.Contacts)
 	return Ul(ID("contacts-list"),
-		Map(contacts, func(u entities.User) Node {
-			return contactCard(&u)
+		Map(contacts, func(c entities.User) Node {
+			return contactCard(&c)
 		}),
 	)
 }
 
-func contactCard(user *entities.User) Node {
-	return Div(Class("contact-card"),
-		Img(Src(user.ProfilePicture), Class("pfp")),
-		P(Class("label"), Text(user.DisplayName)),
-		P(Class("sublabel"), Text(user.Username)),
+func contactCard(target *entities.User) Node {
+	return Div(Class("contact-card"), hx.Get("/api/chat/"+target.ID), hx.Swap("outerHTML"), hx.Target("#"+ID_CHAT_WINDOW),
+		Img(Src(target.ProfilePicture), Class("pfp")),
+		P(Class("label"), Text(target.DisplayName)),
+		P(Class("sublabel"), Text(target.Username)),
 	)
 }
 

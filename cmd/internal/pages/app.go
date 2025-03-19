@@ -27,7 +27,7 @@ func pageApp(user *entities.User) Node {
 		Link(Rel("stylesheet"), Href("/static/css/app.css")),
 		Div(Class("panes"),
 			components.ContactsSidebar(user),
-			components.ChatWindow(),
+			components.ChatWindow(nil, nil),
 			components.ProfileSidebar(),
 		),
 	)

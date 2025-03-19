@@ -19,6 +19,7 @@ func routes(app *fiber.App) {
 	app.Post("/api/login", api.Login)
 	app.Post("/api/register", api.Register)
 	app.Put("/api/contacts", api.AddContact)
+	app.Get("/api/chat/:id", api.GetChat)
 
 	// serve static assets
 	app.Static("/static", "static")

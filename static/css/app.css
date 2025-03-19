@@ -13,7 +13,7 @@
     width: 25%;
 }
 
-.chat-window {
+#chat-window {
     background-color: var(--bg-alt);
     width: 50%;
 }

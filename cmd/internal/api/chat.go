@@ -11,8 +11,8 @@ import (
 	"github.com/sophed/lg"
 )
 
-// AddContact will either return an updated contacts component or trigger an error modal
-func AddContact(c *fiber.Ctx) error {
+// GetChat returns either specified chat component or triggers an error modal
+func GetChat(c *fiber.Ctx) error {
 	// check auth
 	authed, user := auth.Validate(c)
 	if !authed {
@@ -20,13 +20,13 @@ func AddContact(c *fiber.Ctx) error {
 	}
 
 	// get target user
-	targetUsername := c.FormValue("target", "")
+	targetID := c.Params("id", "")
 	target, err := storage.METHOD.FindUser(&data.SearchableUser{
-		Username: targetUsername,
+		ID: targetID,
 	})
 	if err != nil { // error modals on fail
 		if err == storage.ErrNotFound {
-			web.SetModalError(c, "No user found with this name.")
+			web.SetModalError(c, "No user found with this ID.")
 		} else {
 			web.SetModalError(c, "Something went wrong, please try again later.")
 			lg.Erro(err) // probably bad
@@ -34,8 +34,5 @@ func AddContact(c *fiber.Ctx) error {
 		c.SendStatus(fiber.StatusOK)
 	}
 
-	user.Contacts = append(user.Contacts, target.ID)
-	storage.METHOD.ReplaceUser(user)
-
-	return c.SendString(web.Render(components.ContactsList(user)))
+	return c.SendString(web.Render(components.ChatWindow(user, target)))
 }

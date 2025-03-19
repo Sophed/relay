@@ -18,7 +18,9 @@
 			"pfp": "",
 			"password_hash": "$2a$04$qdPAJ9vK5hhAfQIry8Jx5.e9wWVbZPn8ZtHgtkGcauvEnVMEaTtju",
 			"timestamp": 1742297410366,
-			"contacts": null
+			"contacts": [
+				"df9c41e8-2e2b-41eb-a8e8-e8c7b6d84cd5"
+			]
 		}
 	]
 }

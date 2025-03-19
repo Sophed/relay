@@ -33,8 +33,8 @@ func AddContact(c *fiber.Ctx) error {
 		}
 	}
 
-	target.GetTokens()
-	// TODO: add target to users contact list
+	user.Contacts = append(user.Contacts, target.ID)
+	storage.METHOD.ReplaceUser(user)
 
 	return c.SendString(web.Render(components.ContactsList(user)))
 }

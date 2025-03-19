@@ -11,17 +11,19 @@ var METHOD StorageMethod
 
 // abstract interface for StorageMethod type
 type StorageMethod interface {
-	
+
 	// AddUser stores a provided user
 	AddUser(*entities.User) error
 
 	// RemoveUser deletes a provided user from storage by their ID
 	RemoveUser(string) error
-	
+
+	// ReplaceUser finds and replaces a user to modify their saved details
+	ReplaceUser(*entities.User) error
+
 	// FindUser searches for a user and returns the results
 	FindUser(*data.SearchableUser) (*entities.User, error)
-	
+
 	// Test ensures the storage method can be read from and returns an error on failure
 	Test() error
-
 }

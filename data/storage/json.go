@@ -37,15 +37,28 @@ func (j *StorageJSON) AddUser(u *entities.User) error {
 	// append user to the list and write it back to the file
 	users.Entries = append(users.Entries, *u)
 	err = j.writeUsers(users)
-	if err != nil {
-		return err
-	}
-	return nil
+	return err
 }
 
 // RemoveUser implements StorageMethod RemoveUser()
 func (j *StorageJSON) RemoveUser(string) error {
 	return nil
+}
+
+// ReplaceUser implements StorageMethod ReplaceUser()
+func (j *StorageJSON) ReplaceUser(target *entities.User) error {
+	list, err := j.readUsers()
+	if err != nil {
+		return err
+	}
+	for i, u := range list.Entries {
+		if u.ID == target.ID {
+			list.Entries[i] = *target
+			err := j.writeUsers(list)
+			return err
+		}
+	}
+	return ErrNotFound
 }
 
 // FindUser implements StorageMethod FindUser()

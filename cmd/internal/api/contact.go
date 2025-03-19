@@ -29,7 +29,7 @@ func AddContact(c *fiber.Ctx) error {
 			web.SetModalError(c, "No user found with this name.")
 		} else {
 			web.SetModalError(c, "Something went wrong, please try again later.")
-			lg.Warn(err) // probably bad
+			lg.Erro(err) // probably bad
 		}
 	}
 

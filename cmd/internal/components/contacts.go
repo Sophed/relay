@@ -21,6 +21,9 @@ func ContactsSidebar(user *entities.User) Node {
 			),
 			ContactsList(user),
 		),
+		Div(Class("bottom"),
+			Button(hx.Post("/api/logout"), Text("Log Out")),
+		),
 	)
 }
 

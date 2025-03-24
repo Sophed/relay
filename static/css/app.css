@@ -52,3 +52,7 @@ button:hover {
     background-color: var(--fg-alt);
     color: var(--fg);
 }
+
+.sublabel {
+    color: var(--fg-alt);
+}

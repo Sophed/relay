@@ -17,5 +17,9 @@ func ChatWindow(user, target *entities.User) Node {
 	}
 	return Div(ID(ID_CHAT_WINDOW), Class("pane"),
 		Text("chat between "+user.DisplayName+" and "+target.DisplayName),
+		Form(ID("message-compose"),
+			Input(ID("chat-input"), Placeholder("Write a messsage to @"+target.Username)),
+			Button(ID("chat-send"), Text("Send")),
+		),
 	)
 }

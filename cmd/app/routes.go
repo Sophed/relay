@@ -18,6 +18,7 @@ func routes(app *fiber.App) {
 	// api routes
 	app.Post("/api/login", api.Login)
 	app.Post("/api/register", api.Register)
+	app.Post("/api/logout", api.Logout)
 	app.Put("/api/contacts", api.AddContact)
 	app.Get("/api/chat/:id", api.GetChat)
 
